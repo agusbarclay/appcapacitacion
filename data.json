@@ -1,0 +1,360 @@
+{
+    "actualizado":  "2026-11-13",
+    "filas":  [
+                  {
+                      "anio":  2024,
+                      "provincia":  "Buenos Aires",
+                      "capacitados":  500
+                  },
+                  {
+                      "anio":  2024,
+                      "provincia":  "Ciudad Autónoma de Buenos Aires",
+                      "capacitados":  276
+                  },
+                  {
+                      "anio":  2024,
+                      "provincia":  "Córdoba",
+                      "capacitados":  77
+                  },
+                  {
+                      "anio":  2024,
+                      "provincia":  "Entre Ríos",
+                      "capacitados":  57
+                  },
+                  {
+                      "anio":  2024,
+                      "provincia":  "Chubut",
+                      "capacitados":  42
+                  },
+                  {
+                      "anio":  2024,
+                      "provincia":  "Santa Fe",
+                      "capacitados":  42
+                  },
+                  {
+                      "anio":  2024,
+                      "provincia":  "Mendoza",
+                      "capacitados":  39
+                  },
+                  {
+                      "anio":  2024,
+                      "provincia":  "Río Negro",
+                      "capacitados":  33
+                  },
+                  {
+                      "anio":  2024,
+                      "provincia":  "Salta",
+                      "capacitados":  28
+                  },
+                  {
+                      "anio":  2024,
+                      "provincia":  "Misiones",
+                      "capacitados":  22
+                  },
+                  {
+                      "anio":  2024,
+                      "provincia":  "Santiago del Estero",
+                      "capacitados":  20
+                  },
+                  {
+                      "anio":  2024,
+                      "provincia":  "Jujuy",
+                      "capacitados":  16
+                  },
+                  {
+                      "anio":  2024,
+                      "provincia":  "Formosa",
+                      "capacitados":  16
+                  },
+                  {
+                      "anio":  2024,
+                      "provincia":  "Catamarca",
+                      "capacitados":  15
+                  },
+                  {
+                      "anio":  2024,
+                      "provincia":  "San Luis",
+                      "capacitados":  14
+                  },
+                  {
+                      "anio":  2024,
+                      "provincia":  "La Rioja",
+                      "capacitados":  14
+                  },
+                  {
+                      "anio":  2024,
+                      "provincia":  "Corrientes",
+                      "capacitados":  10
+                  },
+                  {
+                      "anio":  2024,
+                      "provincia":  "Tucumán",
+                      "capacitados":  9
+                  },
+                  {
+                      "anio":  2024,
+                      "provincia":  "Neuquén",
+                      "capacitados":  8
+                  },
+                  {
+                      "anio":  2024,
+                      "provincia":  "La Pampa",
+                      "capacitados":  7
+                  },
+                  {
+                      "anio":  2024,
+                      "provincia":  "Chaco",
+                      "capacitados":  6
+                  },
+                  {
+                      "anio":  2024,
+                      "provincia":  "San Juan",
+                      "capacitados":  5
+                  },
+                  {
+                      "anio":  2024,
+                      "provincia":  "Santa Cruz",
+                      "capacitados":  4
+                  },
+                  {
+                      "anio":  2025,
+                      "provincia":  "Buenos Aires",
+                      "capacitados":  1391
+                  },
+                  {
+                      "anio":  2025,
+                      "provincia":  "Santa Fe",
+                      "capacitados":  800
+                  },
+                  {
+                      "anio":  2025,
+                      "provincia":  "Córdoba",
+                      "capacitados":  744
+                  },
+                  {
+                      "anio":  2025,
+                      "provincia":  "Ciudad Autónoma de Buenos Aires",
+                      "capacitados":  547
+                  },
+                  {
+                      "anio":  2025,
+                      "provincia":  "Entre Ríos",
+                      "capacitados":  422
+                  },
+                  {
+                      "anio":  2025,
+                      "provincia":  "Río Negro",
+                      "capacitados":  338
+                  },
+                  {
+                      "anio":  2025,
+                      "provincia":  "Santiago del Estero",
+                      "capacitados":  315
+                  },
+                  {
+                      "anio":  2025,
+                      "provincia":  "Chaco",
+                      "capacitados":  189
+                  },
+                  {
+                      "anio":  2025,
+                      "provincia":  "Mendoza",
+                      "capacitados":  187
+                  },
+                  {
+                      "anio":  2025,
+                      "provincia":  "Chubut",
+                      "capacitados":  183
+                  },
+                  {
+                      "anio":  2025,
+                      "provincia":  "San Luis",
+                      "capacitados":  175
+                  },
+                  {
+                      "anio":  2025,
+                      "provincia":  "Tucumán",
+                      "capacitados":  149
+                  },
+                  {
+                      "anio":  2025,
+                      "provincia":  "Santa Cruz",
+                      "capacitados":  144
+                  },
+                  {
+                      "anio":  2025,
+                      "provincia":  "Salta",
+                      "capacitados":  139
+                  },
+                  {
+                      "anio":  2025,
+                      "provincia":  "Misiones",
+                      "capacitados":  128
+                  },
+                  {
+                      "anio":  2025,
+                      "provincia":  "Catamarca",
+                      "capacitados":  95
+                  },
+                  {
+                      "anio":  2025,
+                      "provincia":  "Jujuy",
+                      "capacitados":  85
+                  },
+                  {
+                      "anio":  2025,
+                      "provincia":  "San Juan",
+                      "capacitados":  64
+                  },
+                  {
+                      "anio":  2025,
+                      "provincia":  "Neuquén",
+                      "capacitados":  62
+                  },
+                  {
+                      "anio":  2025,
+                      "provincia":  "La Pampa",
+                      "capacitados":  55
+                  },
+                  {
+                      "anio":  2025,
+                      "provincia":  "La Rioja",
+                      "capacitados":  49
+                  },
+                  {
+                      "anio":  2025,
+                      "provincia":  "Corrientes",
+                      "capacitados":  37
+                  },
+                  {
+                      "anio":  2025,
+                      "provincia":  "Formosa",
+                      "capacitados":  37
+                  },
+                  {
+                      "anio":  2025,
+                      "provincia":  "Tierra del Fuego",
+                      "capacitados":  37
+                  },
+                  {
+                      "anio":  2026,
+                      "provincia":  "Buenos Aires",
+                      "capacitados":  5043
+                  },
+                  {
+                      "anio":  2026,
+                      "provincia":  "Ciudad Autónoma de Buenos Aires",
+                      "capacitados":  2108
+                  },
+                  {
+                      "anio":  2026,
+                      "provincia":  "Santa Fe",
+                      "capacitados":  1626
+                  },
+                  {
+                      "anio":  2026,
+                      "provincia":  "Córdoba",
+                      "capacitados":  1401
+                  },
+                  {
+                      "anio":  2026,
+                      "provincia":  "Tucumán",
+                      "capacitados":  850
+                  },
+                  {
+                      "anio":  2026,
+                      "provincia":  "Santiago del Estero",
+                      "capacitados":  815
+                  },
+                  {
+                      "anio":  2026,
+                      "provincia":  "Jujuy",
+                      "capacitados":  798
+                  },
+                  {
+                      "anio":  2026,
+                      "provincia":  "Entre Ríos",
+                      "capacitados":  608
+                  },
+                  {
+                      "anio":  2026,
+                      "provincia":  "Salta",
+                      "capacitados":  503
+                  },
+                  {
+                      "anio":  2026,
+                      "provincia":  "Misiones",
+                      "capacitados":  500
+                  },
+                  {
+                      "anio":  2026,
+                      "provincia":  "Chaco",
+                      "capacitados":  474
+                  },
+                  {
+                      "anio":  2026,
+                      "provincia":  "Formosa",
+                      "capacitados":  435
+                  },
+                  {
+                      "anio":  2026,
+                      "provincia":  "Mendoza",
+                      "capacitados":  408
+                  },
+                  {
+                      "anio":  2026,
+                      "provincia":  "Chubut",
+                      "capacitados":  406
+                  },
+                  {
+                      "anio":  2026,
+                      "provincia":  "Río Negro",
+                      "capacitados":  347
+                  },
+                  {
+                      "anio":  2026,
+                      "provincia":  "Santa Cruz",
+                      "capacitados":  312
+                  },
+                  {
+                      "anio":  2026,
+                      "provincia":  "Neuquén",
+                      "capacitados":  290
+                  },
+                  {
+                      "anio":  2026,
+                      "provincia":  "San Juan",
+                      "capacitados":  262
+                  },
+                  {
+                      "anio":  2026,
+                      "provincia":  "Catamarca",
+                      "capacitados":  237
+                  },
+                  {
+                      "anio":  2026,
+                      "provincia":  "Corrientes",
+                      "capacitados":  208
+                  },
+                  {
+                      "anio":  2026,
+                      "provincia":  "Tierra del Fuego",
+                      "capacitados":  179
+                  },
+                  {
+                      "anio":  2026,
+                      "provincia":  "La Rioja",
+                      "capacitados":  142
+                  },
+                  {
+                      "anio":  2026,
+                      "provincia":  "San Luis",
+                      "capacitados":  116
+                  },
+                  {
+                      "anio":  2026,
+                      "provincia":  "La Pampa",
+                      "capacitados":  98
+                  }
+              ]
+}

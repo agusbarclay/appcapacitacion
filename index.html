@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Capacitaciones 2024–2026</title>
+<meta name="description" content="Personas capacitadas por provincia y año, 2024–2026.">
+<meta name="theme-color" content="#1f6f8b">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png">
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Capacitaciones">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600&display=swap">
+<style>
+  /* Tablero de una columna: resumen, tarjetas por año, gráficos y tabla. */
+  :root {
+    --bg: #f6f7f9; --panel: #ffffff; --fg: #17202b; --muted: #5b6676; --line: #e1e5eb;
+    --accent: #1f6f8b; --accent-soft: #d6e8ee; --ok: #1d7a46; --bad: #b3261e;
+    --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    --font-head: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #11161c; --panel: #19212a; --fg: #e8edf2; --muted: #9aa6b4; --line: #2a3542;
+      --accent: #5fb3cf; --accent-soft: #23404b; --ok: #5cc48a; --bad: #f2867d; color-scheme: dark; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: 15px; line-height: 1.5; }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 28px max(16px, env(safe-area-inset-right, 0px)) 48px max(16px, env(safe-area-inset-left, 0px)); display: flex; flex-direction: column; gap: 28px; }
+  header { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 12px; }
+  h1 { font-family: var(--font-head); font-weight: 600; font-size: clamp(1.6rem, 4vw, 2.2rem); margin: 0; letter-spacing: -0.01em; text-wrap: balance; }
+  h2 { font-family: var(--font-head); font-weight: 500; font-size: 1.15rem; margin: 0; }
+  .lead { color: var(--muted); margin: 6px 0 0; max-width: 68ch; }
+  .lead b { color: var(--fg); font-weight: 600; font-variant-numeric: tabular-nums; }
+  .meta { font-size: 13px; color: var(--muted); display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  button, select { font: inherit; color: var(--fg); background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 7px 12px; cursor: pointer; }
+  button:hover, select:hover { border-color: var(--accent); }
+  button:focus-visible, select:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  button:disabled { opacity: .6; cursor: progress; }
+  .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; }
+  .kpi { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+  .kpi.main { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .kpi.main .kpi-label, .kpi.main .kpi-sub { color: rgba(255,255,255,.85); }
+  .kpi-label { font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); font-weight: 500; }
+  .kpi-value { font-family: var(--font-head); font-size: 2rem; font-weight: 600; line-height: 1.1; font-variant-numeric: tabular-nums; }
+  .kpi-sub { font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .up { color: var(--ok); font-weight: 600; } .down { color: var(--bad); font-weight: 600; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 18px; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+  .card-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; }
+  .note { font-size: 13px; color: var(--muted); margin: 0; }
+  .years { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; align-items: end; height: 220px; padding-top: 22px; }
+  .ycol { display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; gap: 6px; min-width: 0; }
+  .ybar { width: min(120px, 70%); background: var(--accent); border-radius: 6px 6px 0 0; min-height: 2px; position: relative; transition: height .5s ease; }
+  .ybar span { position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); padding-bottom: 4px; font-size: 13px; font-weight: 600; white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .ylabel { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line); width: 100%; text-align: center; padding-top: 6px; }
+  .prov { display: grid; grid-template-columns: minmax(90px, max-content) 1fr; gap: 4px 12px; align-items: center; }
+  .prov .name { font-size: 13px; text-align: right; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 42vw; }
+  .prov .track { display: flex; align-items: center; gap: 8px; min-width: 0; }
+  .prov .bar { height: 16px; background: var(--accent); border-radius: 3px; min-width: 2px; transition: width .5s ease; }
+  .prov .val { font-size: 13px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .prov .val small { color: var(--muted); margin-left: 4px; }
+  .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; }
+  table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+  th, td { padding: 8px 12px; text-align: right; border-bottom: 1px solid var(--line); white-space: nowrap; }
+  th:first-child, td:first-child { text-align: left; }
+  thead th { font-size: 12px; color: var(--muted); font-weight: 500; background: var(--bg); cursor: pointer; user-select: none; }
+  thead th[aria-sort] { color: var(--fg); }
+  tbody tr:last-child td { border-bottom: 0; }
+  tfoot td { font-weight: 600; border-top: 2px solid var(--line); border-bottom: 0; }
+  td.tot { font-weight: 600; }
+  details summary { cursor: pointer; color: var(--muted); }
+  details ul { margin: 10px 0 0; padding-left: 1.2em; max-width: 75ch; color: var(--muted); }
+  .src { font-size: 13px; }
+  .src li { margin-bottom: 4px; }
+  .err { color: var(--bad); }
+  .state { padding: 60px 0; text-align: center; color: var(--muted); }
+  .skel { display: inline-block; width: 4ch; height: 1em; background: var(--line); border-radius: 4px; vertical-align: middle; }
+  @media (prefers-reduced-motion: reduce) { .ybar, .prov .bar { transition: none; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>Capacitaciones 2024–2026</h1>
+      <p class="lead" id="lead">Cargando los datos de las planillas…</p>
+    </div>
+    <div class="meta">
+      <span id="actualizado"></span>
+    </div>
+  </header>
+
+  <section class="kpis" aria-label="Totales">
+    <div class="kpi main"><span class="kpi-label">Total 2024–2026</span><span class="kpi-value" id="k-total"><span class="skel"></span></span><span class="kpi-sub">Personas capacitadas</span></div>
+    <div class="kpi"><span class="kpi-label">2024</span><span class="kpi-value" id="k-2024"><span class="skel"></span></span><span class="kpi-sub">Primer año del registro</span></div>
+    <div class="kpi"><span class="kpi-label">2025</span><span class="kpi-value" id="k-2025"><span class="skel"></span></span><span class="kpi-sub" id="d-2025">&nbsp;</span></div>
+    <div class="kpi"><span class="kpi-label">2026</span><span class="kpi-value" id="k-2026"><span class="skel"></span></span><span class="kpi-sub" id="d-2026">&nbsp;</span></div>
+  </section>
+
+  <section class="card" aria-labelledby="t-anio">
+    <h2 id="t-anio">Personas capacitadas por año</h2>
+    <div class="years" id="g-anio" role="img" aria-label="Gráfico de personas capacitadas por año"></div>
+  </section>
+
+  <section class="card" aria-labelledby="t-prov">
+    <div class="card-head">
+      <h2 id="t-prov">Personas capacitadas por provincia</h2>
+      <select id="filtro-anio" aria-label="Año">
+        <option value="">Los tres años</option>
+        <option value="2024">2024</option>
+        <option value="2025">2025</option>
+        <option value="2026">2026</option>
+      </select>
+    </div>
+    <p class="note">De mayor a menor, con el porcentaje sobre el total del período elegido.</p>
+    <div class="prov" id="g-prov"></div>
+  </section>
+
+  <section class="card" aria-labelledby="t-tabla">
+    <h2 id="t-tabla">Detalle por provincia y año</h2>
+    <p class="note">Tocá un encabezado para ordenar.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr>
+          <th data-k="provincia">Provincia</th><th data-k="y2024">2024</th><th data-k="y2025">2025</th><th data-k="y2026">2026</th><th data-k="total" aria-sort="descending">Total</th>
+        </tr></thead>
+        <tbody id="tabla"></tbody>
+        <tfoot id="tabla-pie"></tfoot>
+      </table>
+    </div>
+  </section>
+
+  <section class="card">
+    <details>
+      <summary>Cómo se cuentan las personas capacitadas</summary>
+      <ul>
+        <li>Cada asistencia cuenta una vez: si una persona hizo tres cursos, suma tres.</li>
+        <li>Se cuenta a quien tiene “SI” en Asistencia. Si la hoja no tiene esa columna: “APROBADO” en Calificación, “SI” en Certificado o “SI” en Aprobó actividad final.</li>
+        <li>En 2024, las asistencias sin provincia se asignan a Buenos Aires.</li>
+        <li>Las entidades no cumplidoras de la RES 756-B cuentan cada una como una persona capacitada de su provincia (2026).</li>
+      </ul>
+    </details>
+    <details>
+      <summary>De dónde salen los datos</summary>
+      <ul class="src">
+        <li>2024: planillas de inscripción Virtual sincrónico, Campus virtual y Presenciales.</li>
+        <li>2025: planillas de inscripción Sincrónicos, Campus y Auditorio.</li>
+        <li>2026: base única de inscripción y listado de entidades no cumplidoras RES 756-B (consulta del 04-06-2026).</li>
+      </ul>
+    </details>
+  </section>
+</div>
+
+<script>
+  var ANIOS = [2024, 2025, 2026];
+  var NUM = new Intl.NumberFormat('es-AR');
+  var PCT = new Intl.NumberFormat('es-AR', { style: 'percent', maximumFractionDigits: 1 });
+  var PCT0 = new Intl.NumberFormat('es-AR', { style: 'percent', maximumFractionDigits: 0, signDisplay: 'always' });
+  var estado = { datos: null, orden: { k: 'total', dir: -1 } };
+
+  function el(tag, cls, txt) { var e = document.createElement(tag); if (cls) e.className = cls; if (txt !== undefined) e.textContent = txt; return e; }
+  function $(id) { return document.getElementById(id); }
+
+  function cargar() {
+    fetch('/data.json', { cache: 'no-cache' })
+      .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+      .then(function (d) { estado.datos = d; dibujar(); })
+      .catch(function () { $('lead').textContent = 'No se pudieron cargar los datos. Revisá la conexión y volvé a abrir la app.'; });
+  }
+
+  function resumen() {
+    var filas = estado.datos.filas;
+    var porAnio = {}; ANIOS.forEach(function (a) { porAnio[a] = 0; });
+    var porProv = {};
+    filas.forEach(function (f) {
+      porAnio[f.anio] = (porAnio[f.anio] || 0) + f.capacitados;
+      var o = porProv[f.provincia] || (porProv[f.provincia] = { provincia: f.provincia, y2024: 0, y2025: 0, y2026: 0, total: 0 });
+      if (('y' + f.anio) in o) { o['y' + f.anio] += f.capacitados; o.total += f.capacitados; }
+    });
+    var provs = Object.keys(porProv).map(function (k) { return porProv[k]; });
+    return { porAnio: porAnio, provs: provs, total: ANIOS.reduce(function (s, a) { return s + porAnio[a]; }, 0) };
+  }
+
+  function dibujar() {
+    var r = resumen();
+    var top = r.provs.slice().sort(function (a, b) { return b.total - a.total; })[0];
+    var mejorAnio = ANIOS.reduce(function (a, b) { return r.porAnio[b] > r.porAnio[a] ? b : a; });
+    var lead = $('lead'); lead.replaceChildren();
+    lead.append('Entre 2024 y 2026 se capacitaron ', el('b', '', NUM.format(r.total)), ' personas. El año con más personas capacitadas fue ',
+      el('b', '', String(mejorAnio)), top ? ', y la provincia con más capacitados es ' : '.');
+    if (top) lead.append(el('b', '', top.provincia), ', con ', el('b', '', NUM.format(top.total)), '.');
+    var f = String(estado.datos.actualizado || '').split('-');
+    $('actualizado').textContent = f.length === 3 ? 'Datos al ' + f[2] + '/' + f[1] + '/' + f[0] : '';
+
+    $('k-total').textContent = NUM.format(r.total);
+    ANIOS.forEach(function (a, i) {
+      $('k-' + a).textContent = NUM.format(r.porAnio[a]);
+      if (i > 0) {
+        var prev = r.porAnio[ANIOS[i - 1]], d = $('d-' + a); d.replaceChildren();
+        if (prev) { var c = (r.porAnio[a] - prev) / prev; d.append(el('span', c >= 0 ? 'up' : 'down', (c >= 0 ? '▲ ' : '▼ ') + PCT0.format(c)), ' frente a ' + ANIOS[i - 1]); }
+      }
+    });
+
+    var g = $('g-anio'); g.replaceChildren();
+    var max = Math.max.apply(null, ANIOS.map(function (a) { return r.porAnio[a]; })) || 1;
+    g.setAttribute('aria-label', 'Personas capacitadas por año: ' + ANIOS.map(function (a) { return a + ', ' + NUM.format(r.porAnio[a]); }).join('; '));
+    ANIOS.forEach(function (a) {
+      var col = el('div', 'ycol'); var bar = el('div', 'ybar'); bar.style.height = (r.porAnio[a] / max * 85) + '%';
+      bar.appendChild(el('span', '', NUM.format(r.porAnio[a]))); col.append(bar, el('div', 'ylabel', String(a))); g.appendChild(col);
+    });
+
+    dibujarProvincias(r);
+    dibujarTabla(r);
+
+  }
+
+  function dibujarProvincias(r) {
+    var anio = $('filtro-anio').value, k = anio ? 'y' + anio : 'total';
+    var rows = r.provs.filter(function (p) { return p[k] > 0; }).sort(function (a, b) { return b[k] - a[k]; });
+    var sum = rows.reduce(function (s, p) { return s + p[k]; }, 0) || 1;
+    var max = rows.length ? rows[0][k] : 1;
+    var g = $('g-prov'); g.replaceChildren();
+    rows.forEach(function (p) {
+      var name = el('div', 'name', p.provincia); name.title = p.provincia;
+      var track = el('div', 'track'); var bar = el('div', 'bar'); bar.style.width = 'calc((100% - 110px) * ' + (p[k] / max) + ')';
+      var val = el('span', 'val', NUM.format(p[k])); val.appendChild(el('small', '', PCT.format(p[k] / sum)));
+      track.append(bar, val); g.append(name, track);
+    });
+  }
+
+  function dibujarTabla(r) {
+    var o = estado.orden;
+    var rows = r.provs.slice().sort(function (a, b) {
+      var x = a[o.k], y = b[o.k];
+      return (typeof x === 'string' ? x.localeCompare(y, 'es') : x - y) * o.dir;
+    });
+    var tb = $('tabla'); tb.replaceChildren();
+    rows.forEach(function (p) {
+      var tr = el('tr');
+      [p.provincia, NUM.format(p.y2024), NUM.format(p.y2025), NUM.format(p.y2026), NUM.format(p.total)].forEach(function (c, i) { tr.appendChild(el('td', i === 4 ? 'tot' : '', c)); });
+      tb.appendChild(tr);
+    });
+    var pie = $('tabla-pie'); pie.replaceChildren(); var tr = el('tr');
+    ['Total', NUM.format(r.porAnio[2024]), NUM.format(r.porAnio[2025]), NUM.format(r.porAnio[2026]), NUM.format(r.total)].forEach(function (c) { tr.appendChild(el('td', '', c)); });
+    pie.appendChild(tr);
+    document.querySelectorAll('thead th').forEach(function (th) {
+      if (th.dataset.k === o.k) th.setAttribute('aria-sort', o.dir < 0 ? 'descending' : 'ascending'); else th.removeAttribute('aria-sort');
+    });
+  }
+
+  $('filtro-anio').addEventListener('change', function () { if (estado.datos) dibujarProvincias(resumen()); });
+  document.querySelectorAll('thead th').forEach(function (th) {
+    th.tabIndex = 0;
+    var ordenar = function () {
+      var k = th.dataset.k;
+      estado.orden = { k: k, dir: estado.orden.k === k ? -estado.orden.dir : (k === 'provincia' ? 1 : -1) };
+      if (estado.datos) dibujarTabla(resumen());
+    };
+    th.addEventListener('click', ordenar);
+    th.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); ordenar(); } });
+  });
+
+  cargar();
+  if ('serviceWorker' in navigator && location.protocol === 'https:') {
+    window.addEventListener('load', function () { navigator.serviceWorker.register('/sw.js').catch(function () {}); });
+  }
+</script>
+</body>
+</html>
