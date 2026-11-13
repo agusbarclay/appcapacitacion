@@ -4,117 +4,122 @@
                   {
                       "anio":  2024,
                       "provincia":  "Buenos Aires",
-                      "capacitados":  500
+                      "capacitados":  702
                   },
                   {
                       "anio":  2024,
                       "provincia":  "Ciudad Autónoma de Buenos Aires",
-                      "capacitados":  276
+                      "capacitados":  478
                   },
                   {
                       "anio":  2024,
                       "provincia":  "Córdoba",
-                      "capacitados":  77
+                      "capacitados":  279
                   },
                   {
                       "anio":  2024,
                       "provincia":  "Entre Ríos",
-                      "capacitados":  57
-                  },
-                  {
-                      "anio":  2024,
-                      "provincia":  "Chubut",
-                      "capacitados":  42
+                      "capacitados":  259
                   },
                   {
                       "anio":  2024,
                       "provincia":  "Santa Fe",
-                      "capacitados":  42
+                      "capacitados":  244
+                  },
+                  {
+                      "anio":  2024,
+                      "provincia":  "Chubut",
+                      "capacitados":  244
                   },
                   {
                       "anio":  2024,
                       "provincia":  "Mendoza",
-                      "capacitados":  39
+                      "capacitados":  241
                   },
                   {
                       "anio":  2024,
                       "provincia":  "Río Negro",
-                      "capacitados":  33
+                      "capacitados":  235
                   },
                   {
                       "anio":  2024,
                       "provincia":  "Salta",
-                      "capacitados":  28
+                      "capacitados":  230
                   },
                   {
                       "anio":  2024,
                       "provincia":  "Misiones",
-                      "capacitados":  22
+                      "capacitados":  224
                   },
                   {
                       "anio":  2024,
                       "provincia":  "Santiago del Estero",
-                      "capacitados":  20
+                      "capacitados":  222
                   },
                   {
                       "anio":  2024,
                       "provincia":  "Jujuy",
-                      "capacitados":  16
+                      "capacitados":  218
                   },
                   {
                       "anio":  2024,
                       "provincia":  "Formosa",
-                      "capacitados":  16
+                      "capacitados":  218
                   },
                   {
                       "anio":  2024,
                       "provincia":  "Catamarca",
-                      "capacitados":  15
+                      "capacitados":  217
                   },
                   {
                       "anio":  2024,
                       "provincia":  "San Luis",
-                      "capacitados":  14
+                      "capacitados":  216
                   },
                   {
                       "anio":  2024,
                       "provincia":  "La Rioja",
-                      "capacitados":  14
+                      "capacitados":  216
                   },
                   {
                       "anio":  2024,
                       "provincia":  "Corrientes",
-                      "capacitados":  10
+                      "capacitados":  211
                   },
                   {
                       "anio":  2024,
                       "provincia":  "Tucumán",
-                      "capacitados":  9
+                      "capacitados":  210
                   },
                   {
                       "anio":  2024,
                       "provincia":  "Neuquén",
-                      "capacitados":  8
+                      "capacitados":  209
                   },
                   {
                       "anio":  2024,
                       "provincia":  "La Pampa",
-                      "capacitados":  7
+                      "capacitados":  208
                   },
                   {
                       "anio":  2024,
                       "provincia":  "Chaco",
-                      "capacitados":  6
+                      "capacitados":  207
                   },
                   {
                       "anio":  2024,
                       "provincia":  "San Juan",
-                      "capacitados":  5
+                      "capacitados":  206
                   },
                   {
                       "anio":  2024,
                       "provincia":  "Santa Cruz",
-                      "capacitados":  4
+                      "capacitados":  205
+                  },
+                  {
+                      "anio":  2024,
+                      "provincia":  "Tierra del Fuego",
+                      "capacitados":  201
                   },
                   {
                       "anio":  2025,
@@ -223,138 +228,138 @@
                   },
                   {
                       "anio":  2025,
-                      "provincia":  "Corrientes",
-                      "capacitados":  37
-                  },
-                  {
-                      "anio":  2025,
                       "provincia":  "Formosa",
                       "capacitados":  37
                   },
                   {
                       "anio":  2025,
                       "provincia":  "Tierra del Fuego",
+                      "capacitados":  37
+                  },
+                  {
+                      "anio":  2025,
+                      "provincia":  "Corrientes",
                       "capacitados":  37
                   },
                   {
                       "anio":  2026,
                       "provincia":  "Buenos Aires",
-                      "capacitados":  5043
+                      "capacitados":  5203
                   },
                   {
                       "anio":  2026,
                       "provincia":  "Ciudad Autónoma de Buenos Aires",
-                      "capacitados":  2108
+                      "capacitados":  2268
                   },
                   {
                       "anio":  2026,
                       "provincia":  "Santa Fe",
-                      "capacitados":  1626
+                      "capacitados":  1786
                   },
                   {
                       "anio":  2026,
                       "provincia":  "Córdoba",
-                      "capacitados":  1401
+                      "capacitados":  1561
                   },
                   {
                       "anio":  2026,
                       "provincia":  "Tucumán",
-                      "capacitados":  850
+                      "capacitados":  1010
                   },
                   {
                       "anio":  2026,
                       "provincia":  "Santiago del Estero",
-                      "capacitados":  815
+                      "capacitados":  975
                   },
                   {
                       "anio":  2026,
                       "provincia":  "Jujuy",
-                      "capacitados":  798
+                      "capacitados":  958
                   },
                   {
                       "anio":  2026,
                       "provincia":  "Entre Ríos",
-                      "capacitados":  608
+                      "capacitados":  768
                   },
                   {
                       "anio":  2026,
                       "provincia":  "Salta",
-                      "capacitados":  503
+                      "capacitados":  663
                   },
                   {
                       "anio":  2026,
                       "provincia":  "Misiones",
-                      "capacitados":  500
+                      "capacitados":  659
                   },
                   {
                       "anio":  2026,
                       "provincia":  "Chaco",
-                      "capacitados":  474
+                      "capacitados":  633
                   },
                   {
                       "anio":  2026,
                       "provincia":  "Formosa",
-                      "capacitados":  435
+                      "capacitados":  594
                   },
                   {
                       "anio":  2026,
                       "provincia":  "Mendoza",
-                      "capacitados":  408
+                      "capacitados":  567
                   },
                   {
                       "anio":  2026,
                       "provincia":  "Chubut",
-                      "capacitados":  406
+                      "capacitados":  565
                   },
                   {
                       "anio":  2026,
                       "provincia":  "Río Negro",
-                      "capacitados":  347
+                      "capacitados":  506
                   },
                   {
                       "anio":  2026,
                       "provincia":  "Santa Cruz",
-                      "capacitados":  312
+                      "capacitados":  471
                   },
                   {
                       "anio":  2026,
                       "provincia":  "Neuquén",
-                      "capacitados":  290
+                      "capacitados":  449
                   },
                   {
                       "anio":  2026,
                       "provincia":  "San Juan",
-                      "capacitados":  262
+                      "capacitados":  421
                   },
                   {
                       "anio":  2026,
                       "provincia":  "Catamarca",
-                      "capacitados":  237
+                      "capacitados":  396
                   },
                   {
                       "anio":  2026,
                       "provincia":  "Corrientes",
-                      "capacitados":  208
+                      "capacitados":  367
                   },
                   {
                       "anio":  2026,
                       "provincia":  "Tierra del Fuego",
-                      "capacitados":  179
+                      "capacitados":  338
                   },
                   {
                       "anio":  2026,
                       "provincia":  "La Rioja",
-                      "capacitados":  142
+                      "capacitados":  301
                   },
                   {
                       "anio":  2026,
                       "provincia":  "San Luis",
-                      "capacitados":  116
+                      "capacitados":  275
                   },
                   {
                       "anio":  2026,
                       "provincia":  "La Pampa",
-                      "capacitados":  98
+                      "capacitados":  257
                   }
               ]
 }
