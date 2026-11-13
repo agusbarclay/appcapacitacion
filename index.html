@@ -20,13 +20,15 @@
   :root {
     --bg: #f6f7f9; --panel: #ffffff; --fg: #17202b; --muted: #5b6676; --line: #e1e5eb;
     --accent: #1f6f8b; --accent-soft: #d6e8ee; --ok: #1d7a46; --bad: #b3261e;
+    --m0: #e9edf1; --m1: #bfdbe5; --m2: #93c4d6; --m3: #5fa7c0; --m4: #2b7d9b; --m5: #134f66; --map-stroke: #ffffff;
     --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
     --font-head: 'Space Grotesk', 'Inter', system-ui, sans-serif;
     color-scheme: light;
   }
   @media (prefers-color-scheme: dark) {
     :root { --bg: #11161c; --panel: #19212a; --fg: #e8edf2; --muted: #9aa6b4; --line: #2a3542;
-      --accent: #5fb3cf; --accent-soft: #23404b; --ok: #5cc48a; --bad: #f2867d; color-scheme: dark; }
+      --accent: #5fb3cf; --accent-soft: #23404b; --ok: #5cc48a; --bad: #f2867d; color-scheme: dark;
+      --m0: #232c36; --m1: #1d3d4a; --m2: #23607a; --m3: #2f88a8; --m4: #5fb3cf; --m5: #a6dcee; --map-stroke: #11161c; }
   }
   * { box-sizing: border-box; }
   body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: 15px; line-height: 1.5; }
@@ -57,6 +59,21 @@
   .ybar { width: min(120px, 70%); background: var(--accent); border-radius: 6px 6px 0 0; min-height: 2px; position: relative; transition: height .5s ease; }
   .ybar span { position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); padding-bottom: 4px; font-size: 13px; font-weight: 600; white-space: nowrap; font-variant-numeric: tabular-nums; }
   .ylabel { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line); width: 100%; text-align: center; padding-top: 6px; }
+  .prov-layout { display: grid; grid-template-columns: minmax(0, 340px) minmax(0, 1fr); gap: 24px; align-items: start; }
+  @media (max-width: 760px) { .prov-layout { grid-template-columns: minmax(0, 1fr); } }
+  .prov-list { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+  .map-box { margin: 0; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+  .map-wrap { width: 100%; max-width: 340px; margin: 0 auto; }
+  .map-wrap svg { display: block; width: 100%; height: auto; }
+  .map-wrap path, .map-wrap circle { stroke: var(--map-stroke); stroke-width: .8; stroke-linejoin: round; cursor: pointer; transition: fill .4s ease; }
+  .map-wrap .sel { stroke: var(--fg); stroke-width: 1.6; }
+  .map-wrap .caba { stroke-width: 1.2; }
+  .map-info { font-size: 13px; color: var(--muted); text-align: center; min-height: 1.5em; font-variant-numeric: tabular-nums; }
+  .map-info b { color: var(--fg); font-weight: 600; }
+  .legend { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 12px; font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .legend span { display: inline-flex; align-items: center; gap: 5px; }
+  .legend i { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+  @media (prefers-reduced-motion: reduce) { .map-wrap path, .map-wrap circle { transition: none; } }
   .prov { display: grid; grid-template-columns: minmax(90px, max-content) 1fr; gap: 4px 12px; align-items: center; }
   .prov .name { font-size: 13px; text-align: right; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 42vw; }
   .prov .track { display: flex; align-items: center; gap: 8px; min-width: 0; }
@@ -116,8 +133,17 @@
         <option value="2026">2026</option>
       </select>
     </div>
-    <p class="note">De mayor a menor, con el porcentaje sobre el total del período elegido.</p>
-    <div class="prov" id="g-prov"></div>
+    <div class="prov-layout">
+      <figure class="map-box">
+        <div class="map-wrap" id="mapa" role="img" aria-label="Mapa de la Argentina con las provincias coloreadas según la cantidad de personas capacitadas"></div>
+        <figcaption class="map-info" id="mapa-info">Tocá una provincia para ver su cantidad.</figcaption>
+        <div class="legend" id="mapa-leyenda" aria-label="Referencias del mapa"></div>
+      </figure>
+      <div class="prov-list">
+        <p class="note">De mayor a menor, con el porcentaje sobre el total del período elegido.</p>
+        <div class="prov" id="g-prov"></div>
+      </div>
+    </div>
   </section>
 
   <section class="card" aria-labelledby="t-tabla">
@@ -134,25 +160,6 @@
     </div>
   </section>
 
-  <section class="card">
-    <details>
-      <summary>Cómo se cuentan las personas capacitadas</summary>
-      <ul>
-        <li>Cada asistencia cuenta una vez: si una persona hizo tres cursos, suma tres.</li>
-        <li>Se cuenta a quien tiene “SI” en Asistencia. Si la hoja no tiene esa columna: “APROBADO” en Calificación, “SI” en Certificado o “SI” en Aprobó actividad final.</li>
-        <li>En 2024, las asistencias sin provincia se asignan a Buenos Aires.</li>
-        <li>Las entidades no cumplidoras de la RES 756-B cuentan cada una como una persona capacitada de su provincia (2026).</li>
-      </ul>
-    </details>
-    <details>
-      <summary>De dónde salen los datos</summary>
-      <ul class="src">
-        <li>2024: planillas de inscripción Virtual sincrónico, Campus virtual y Presenciales.</li>
-        <li>2025: planillas de inscripción Sincrónicos, Campus y Auditorio.</li>
-        <li>2026: base única de inscripción y listado de entidades no cumplidoras RES 756-B (consulta del 04-06-2026).</li>
-      </ul>
-    </details>
-  </section>
 </div>
 
 <script>
@@ -165,11 +172,67 @@
   function el(tag, cls, txt) { var e = document.createElement(tag); if (cls) e.className = cls; if (txt !== undefined) e.textContent = txt; return e; }
   function $(id) { return document.getElementById(id); }
 
+  function json(url) { return fetch(url, { cache: 'no-cache' }).then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); }); }
   function cargar() {
-    fetch('/data.json', { cache: 'no-cache' })
-      .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+    json('/data.json')
       .then(function (d) { estado.datos = d; dibujar(); })
       .catch(function () { $('lead').textContent = 'No se pudieron cargar los datos. Revisá la conexión y volvé a abrir la app.'; });
+    json('/provincias.json')
+      .then(function (m) { estado.mapa = m; if (estado.datos) dibujarProvincias(resumen()); })
+      .catch(function () { $('mapa-info').textContent = 'No se pudo cargar el mapa.'; });
+  }
+
+  var SVGNS = 'http://www.w3.org/2000/svg';
+  function armarMapa() {
+    var box = $('mapa'); if (box.firstChild || !estado.mapa) return;
+    var svg = document.createElementNS(SVGNS, 'svg');
+    svg.setAttribute('viewBox', estado.mapa.viewBox);
+    box.appendChild(svg);
+    estado.mapa.provincias.forEach(function (p) {
+      var path = document.createElementNS(SVGNS, 'path');
+      path.setAttribute('d', p.d); path.dataset.prov = p.nombre;
+      var t = document.createElementNS(SVGNS, 'title'); t.textContent = p.nombre; path.appendChild(t);
+      svg.appendChild(path);
+      if (p.nombre === 'Ciudad Autónoma de Buenos Aires') {
+        var b = path.getBBox(), c = document.createElementNS(SVGNS, 'circle');
+        c.setAttribute('cx', b.x + b.width / 2); c.setAttribute('cy', b.y + b.height / 2); c.setAttribute('r', 5);
+        c.setAttribute('class', 'caba'); c.dataset.prov = p.nombre;
+        var t2 = document.createElementNS(SVGNS, 'title'); t2.textContent = p.nombre; c.appendChild(t2);
+        estado.cabaMarca = c;
+      }
+    });
+    if (estado.cabaMarca) svg.appendChild(estado.cabaMarca); // la Ciudad queda encima, visible
+    var elegir = function (e) { var n = e.target.closest('[data-prov]'); if (n) { estado.sel = n.dataset.prov; dibujarProvincias(resumen()); } };
+    svg.addEventListener('click', elegir);
+    svg.addEventListener('mouseover', elegir);
+  }
+
+  function dibujarMapa(rows, k, sum, anio) {
+    if (!estado.mapa) return;
+    armarMapa();
+    var vals = {}; rows.forEach(function (p) { vals[p.provincia] = p[k]; });
+    var orden = rows.map(function (p) { return p[k]; }).filter(function (v) { return v > 0; }).sort(function (a, b) { return a - b; });
+    var cortes = [1, 2, 3, 4].map(function (i) { return orden.length ? orden[Math.min(orden.length - 1, Math.floor(orden.length * i / 5))] : 0; });
+    var clase = function (v) { if (!(v > 0)) return 0; var c = 1; cortes.forEach(function (t) { if (v >= t) c++; }); return Math.min(c, 5); };
+    var rangos = {};
+    orden.forEach(function (v) { var c = clase(v); rangos[c] = rangos[c] || [v, v]; rangos[c][0] = Math.min(rangos[c][0], v); rangos[c][1] = Math.max(rangos[c][1], v); });
+    document.querySelectorAll('#mapa [data-prov]').forEach(function (n) {
+      var v = vals[n.dataset.prov] || 0;
+      n.style.fill = 'var(--m' + clase(v) + ')';
+      n.classList.toggle('sel', n.dataset.prov === estado.sel);
+    });
+    var ley = $('mapa-leyenda'); ley.replaceChildren();
+    [1, 2, 3, 4, 5].forEach(function (c) {
+      if (!rangos[c]) return;
+      var s = el('span'); var i = el('i'); i.style.background = 'var(--m' + c + ')';
+      s.append(i, rangos[c][0] === rangos[c][1] ? NUM.format(rangos[c][0]) : NUM.format(rangos[c][0]) + '–' + NUM.format(rangos[c][1]));
+      ley.appendChild(s);
+    });
+    var info = $('mapa-info'); info.replaceChildren();
+    if (estado.sel) {
+      var v = vals[estado.sel] || 0;
+      info.append(el('b', '', estado.sel), ': ' + NUM.format(v) + ' personas · ' + PCT.format(v / sum) + ' del total' + (anio ? ' de ' + anio : ''));
+    } else info.textContent = 'Tocá una provincia para ver su cantidad.';
   }
 
   function resumen() {
@@ -223,6 +286,7 @@
     var rows = r.provs.filter(function (p) { return p[k] > 0; }).sort(function (a, b) { return b[k] - a[k]; });
     var sum = rows.reduce(function (s, p) { return s + p[k]; }, 0) || 1;
     var max = rows.length ? rows[0][k] : 1;
+    dibujarMapa(r.provs, k, sum, anio);
     var g = $('g-prov'); g.replaceChildren();
     rows.forEach(function (p) {
       var name = el('div', 'name', p.provincia); name.title = p.provincia;

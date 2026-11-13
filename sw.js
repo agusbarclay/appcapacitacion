@@ -1,7 +1,7 @@
 // Guarda la app en el celular para que abra sin conexión.
 // Siempre intenta traer la versión nueva primero; si no hay internet, usa la guardada.
-const CACHE = 'capacitaciones-v1';
-const ARCHIVOS = ['/', '/index.html', '/data.json', '/manifest.webmanifest', '/icons/icon-192.png', '/icons/icon-512.png'];
+const CACHE = 'capacitaciones-v2';
+const ARCHIVOS = ['/', '/index.html', '/data.json', '/provincias.json', '/manifest.webmanifest', '/icons/icon-192.png', '/icons/icon-512.png'];
 
 self.addEventListener('install', (e) => {
   e.waitUntil(caches.open(CACHE).then((c) => c.addAll(ARCHIVOS)).then(() => self.skipWaiting()));
